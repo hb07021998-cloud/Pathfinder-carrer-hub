@@ -1,30 +1,5 @@
-'use strict';
-const CACHE_NAME = 'pathfinder-career-hub-v23';
-const BASE = new URL('./', self.registration.scope);
-const APP_SHELL = [
-  new URL('./', BASE).href,
-  new URL('./index.html', BASE).href,
-  new URL('./manifest.webmanifest', BASE).href,
-  new URL('./privacy-policy.html', BASE).href,
-  new URL('./icons/icon-192.png', BASE).href,
-  new URL('./icons/icon-512.png', BASE).href,
-  new URL('./icons/icon-512-maskable.png', BASE).href
-];
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
-  self.skipWaiting();
-});
-self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('pathfinder-career-hub-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim()));
-});
-self.addEventListener('fetch', event => {
-  const request = event.request;
-  if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
-  event.respondWith(caches.match(request).then(cached => cached || fetch(request).then(response => {
-    if (response && response.ok) {
-      const copy = response.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
-    }
-    return response;
-  }).catch(() => caches.match(new URL('./index.html', BASE).href))));
-});
+const CACHE_NAME = 'pathfinder-v21-3-policy-1';
+const CORE_ASSETS = ['./', './index.html', './manifest.webmanifest', './privacy-policy.html', './icons/icon-192.png', './icons/icon-512.png'];
+self.addEventListener('install', event => { event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_ASSETS)).then(() => self.skipWaiting())); });
+self.addEventListener('activate', event => { event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())); });
+self.addEventListener('fetch', event => { const req = event.request; if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return; event.respondWith(caches.match(req).then(cached => cached || fetch(req).then(response => { if (response && response.ok) { const copy=response.clone(); caches.open(CACHE_NAME).then(cache => cache.put(req,copy)); } return response; }).catch(() => caches.match('./index.html')))); });

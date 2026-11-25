@@ -1,35 +1,31 @@
-PATHFINDER – FRESH PLAY STORE STARTER PACKAGE
-Prepared: 21 November 2026
-Support email: hb07021998@gmail.com
+PATHFINDER v21.3 – GITHUB PAGES UPDATE PACK
 
-THIS IS A FLAT ZIP: there is no enclosing project folder. After extraction, index.html and manifest.webmanifest should be immediately visible.
+CONTENTS
+- index.html: v21.3 source with an always-available official government/exam source directory and strengthened independence disclaimer.
+- manifest.webmanifest: PWA manifest with relative paths for a GitHub Pages project site.
+- sw.js: service worker for same-origin app shell caching.
+- privacy-policy.html: privacy page matching the app's current on-device storage disclosure.
+- icons/: 192px, 512px and maskable app icons.
+- play-store-assets/: optional 1024x500 feature graphic.
 
-UPLOAD THE CONTENTS TO THE ROOT OF A BRAND-NEW GITHUB REPOSITORY.
-Do not upload this ZIP as a file. Do not put all files inside a nested folder.
+DEPLOY TO GITHUB PAGES
+1. Open your existing Pathfinder-carrer-hub GitHub repository.
+2. Back up or download the current repository contents first.
+3. Upload the CONTENTS of this folder to the repository root (not the enclosing ZIP and not a nested folder).
+4. Commit the changes to the main branch.
+5. In Settings > Pages, keep Deploy from a branch, branch main, folder /(root).
+6. Open the GitHub Pages URL shown in Settings > Pages. It should end with /Pathfinder-carrer-hub/ for a project site.
+7. Test the home page, navigation, source directory links, privacy-policy.html, manifest.webmanifest and icons.
+8. If an old cached version appears, close the installed PWA/browser tab and clear that site's cached data, then reopen the live URL.
 
-ROOT FILES:
-- index.html
-- manifest.webmanifest
-- sw.js
-- privacy-policy.html
-- feature-graphic-1024x500.png
-- PLAY_STORE_LISTING.md
-- PLAY_CONSOLE_CHECKLIST.md
-- MOBILE_PUBLISHING_GUIDE.md
-- .nojekyll
-- icons/icon-192.png
-- icons/icon-512.png
-- icons/icon-512-maskable.png
+BEFORE PWABUILDER / GOOGLE PLAY
+- Confirm the live URL works over HTTPS.
+- Check all source links and every government/exam claim against the relevant current official notice.
+- Verify the privacy policy matches the app's actual behaviour and is publicly accessible.
+- Run PWABuilder again using the live URL.
+- Use the ORIGINAL signing keystore, alias and passwords for future updates. Never share these secrets.
+- Set a versionCode greater than the version already uploaded to Play Console.
+- Upload the newly generated signed AAB, not an APK.
 
-START HERE:
-1. Extract the ZIP on your Android phone.
-2. Read MOBILE_PUBLISHING_GUIDE.md.
-3. Create a new public GitHub repository named pathfinder-career-hub.
-4. Upload the CONTENTS of this folder to repository root; keep icons/ as a folder.
-5. Enable GitHub Pages from main / (root).
-6. Verify homepage, manifest, all three icon URLs and privacy-policy URL.
-7. Only then run PWABuilder using the public HTTPS homepage URL.
-
-IMPORTANT: This is PWA source, not an APK or signed Android App Bundle (.aab). The AAB must be generated after hosting and validation using a packaging route suitable for the app's honestly declared target audience. Never misstate the target age group to bypass a packaging limitation.
-
-Yellow PWABuilder warnings about optional fields may be acceptable. Resolve all red errors and verify the icon URLs before packaging.
+IMPORTANT
+This ZIP is a website/PWA deployment pack. It is NOT an Android App Bundle (.aab), and it does not itself clear a Google Play policy rejection. Google Play review is not guaranteed. The official source directory is a corrective step; manually verify each displayed factual claim and link before resubmitting.
